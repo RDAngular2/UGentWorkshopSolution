@@ -1,0 +1,38 @@
+<!-- This is an example of a template driven form -->
+<form #editorForm="ngForm" >
+
+    <label>Name</label>
+    <input type="text"
+
+           [ngModel]="person.name"  (ngModelChange)="person.name = $event"
+
+           required  minlength="3"
+
+           name="name" #nameInputControl="ngModel" #nameInput
+    />
+
+</form>
+<button type="button" class="btn btn-default" (click)="reset()">Reset</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Concentrate on the form above-->
+<div>
+Model value: {{person|json}} <br />
+
+Form valid: {{editorForm.valid}} <br />
+
+Name errors: {{nameInputControl.errors|json}} <br />
+Name class: {{nameInput.className}}
+</div>

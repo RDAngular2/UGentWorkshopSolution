@@ -1,0 +1,17 @@
+<div class="navbar navbar-default">
+    <div class="navbar-header">
+        <img src="assets/images/logo_ugent.png" class="navbar-brand">
+
+        <!-- The moustaches {{ }} are used to define expressions, in this case it should  binds to the 'applicationName'  property of InitialApplicationHeaderComponent -->
+        <div class="navbar-brand">{{applicationName}}</div>
+    </div>
+    <form class="navbar-form navbar-right" >
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+        </div>
+
+
+        <!-- The brackets ( ) are used to bind events to function, in this case it should bind the click event to the 'loginUser" function of the InitialApplicationHeaderComponent -->
+        <i class="fa fa-search" (click)="search()"></i>
+    </form>
+</div>

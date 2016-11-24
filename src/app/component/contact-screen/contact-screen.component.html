@@ -1,0 +1,13 @@
+<div class="container-fluid">
+    <div class="col-xs-3">
+        <contact-list-viewer [selected]="contact"
+                             (contactChange)="contactChanged($event)" >
+        </contact-list-viewer>
+    </div>
+    <div class="col-xs-9">
+        <contact-editor [contact]="contact" *ngIf="contact != null"
+                        (contactDetailAction)="onContactDetailAction($event)"
+                        (editingChange)="onEditingChange($event)">
+        </contact-editor>
+    </div>
+</div>

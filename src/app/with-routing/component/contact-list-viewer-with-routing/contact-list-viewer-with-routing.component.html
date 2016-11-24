@@ -1,0 +1,5 @@
+<div class="list-group d-table" >
+    <a *ngFor="let c of contacts;"  class="list-group-item"  [routerLink]="['./contact',c.id]"   routerLinkActive="active">
+        <contact-viewer [contact]="c" class="d-inline-block"></contact-viewer>
+    </a>
+</div>

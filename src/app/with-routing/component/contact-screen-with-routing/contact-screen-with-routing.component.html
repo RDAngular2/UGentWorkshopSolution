@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <div class="col-xs-3">
+        <contact-list-viewer-with-routing [selected]="contact" [selectionEnabled]="!editing"
+                             (contactChange)="contactChanged($event)" >
+        </contact-list-viewer-with-routing>
+    </div>
+    <div class="col-xs-9">
+        <router-outlet></router-outlet>
+    </div>
+</div>

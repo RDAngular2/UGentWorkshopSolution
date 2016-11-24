@@ -1,0 +1,6 @@
+<ul class="list-group" >
+    <li *ngFor="let name of names; let i = index; let e = even"  [style.backgroundColor]="e ? 'red' : 'green'" class="list-group-item" >
+        {{name}}
+        <span class="badge">{{i+1}}</span>
+    </li>
+</ul>

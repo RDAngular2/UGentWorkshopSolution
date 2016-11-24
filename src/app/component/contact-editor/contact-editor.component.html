@@ -1,0 +1,22 @@
+<form novalidate #contactForm="ngForm" >
+    <div class="form-group" >
+        <label>First Name</label><span  class="error" *ngIf="!firstNameInput.valid && firstNameInput.touched">The first name is required</span>
+        <input type="text" [(ngModel)]="editorContact.firstName" class="form-control" name="firstName" #firstNameInput="ngModel" required>
+    </div>
+    <div class="form-group">
+        <label>Last Name</label><span class="error" *ngIf="!lastNameInput.valid && lastNameInput.touched">The last name is required</span>
+        <input type="text" [(ngModel)]="editorContact.lastName" class="form-control" name="lastName" #lastNameInput="ngModel" required>
+    </div>
+    <div class="form-group">
+        <label>Phone</label>
+        <input type="text" [(ngModel)]="editorContact.phone" class="form-control" name="phone" #phoneInput="ngModel" >
+    </div>
+    <div class="form-group">
+        <label>Country</label><span  class="error" *ngIf="!countryInput.valid && countryInput.touched">The country is required</span>
+        <input [(ngModel)]="editorContact.country" [typeahead]="countries" class="form-control" name="country" #countryInput="ngModel" required >
+    </div>
+    <button type="button" class="btn btn-primary" (click)="save()">Save</button>
+    <button type="button" class="btn btn-default" (click)="close()">Close</button>
+
+</form>
+{{editorContact|json}}
