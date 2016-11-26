@@ -24,26 +24,7 @@ import {ContactData} from "../demo-data/contact-data";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
 import {ContactHttpService} from "../service/contact/contact.http.service";
 
-/* Hack for dialog */
-ComponentsHelper.prototype.getRootViewContainerRef = function () {
-    // https://github.com/angular/angular/issues/9293
-    if (this.root) {
-        return this.root;
-    }
-    var comps = this.applicationRef.components;
-    if (!comps.length) {
-        throw new Error("ApplicationRef instance not found");
-    }
-    try {
-        /* one more ugly hack, read issue above for details */
-        var rootComponent = this.applicationRef._rootComponents[0];
-        this.root = rootComponent._component.viewContainerRef;
-        return this.root;
-    } catch (e) {
-        throw new Error("ApplicationRef instance not found");
-    }
-};
-/* End Hack for dialog */
+
 
 
 const applicationRoutes: Routes = [
@@ -91,3 +72,41 @@ const applicationRoutes: Routes = [
 export class ApplicationWithRoutingModule {
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Hack for dialog */
+ComponentsHelper.prototype.getRootViewContainerRef = function () {
+    // https://github.com/angular/angular/issues/9293
+    if (this.root) {
+        return this.root;
+    }
+    var comps = this.applicationRef.components;
+    if (!comps.length) {
+        throw new Error("ApplicationRef instance not found");
+    }
+    try {
+        /* one more ugly hack, read issue above for details */
+        var rootComponent = this.applicationRef._rootComponents[0];
+        this.root = rootComponent._component.viewContainerRef;
+        return this.root;
+    } catch (e) {
+        throw new Error("ApplicationRef instance not found");
+    }
+};
+/* End Hack for dialog */

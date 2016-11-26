@@ -21,6 +21,21 @@ export class ContactListViewerWithRoutingComponent implements OnInit {
 
     refresh() {
         this.contacts = this.contactService.getContacts();
+
+        /*
+        *   The code changes if you use the more realistic contactHttpService because you get an Observable<Contact>
+        *
+        *   this.contactHttpService.getContacts().subscribe(
+        *       result => this.contacts = result
+        *   )
+        *
+        *   At the moment, you will probably not be able to appreciate the power of observables (over promises), except that you have the option to cancel an observable! (=request in this case).
+        *
+        *   They become powerful when you start to combine different observables. In real life you will even come across observables that emit observables and you get into
+        *   the exciting world of flatMap / mergeMap and marble diagrams.
+        **/
+
+
     }
 
 

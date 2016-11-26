@@ -88,14 +88,31 @@ export class ContactEditorWithRoutingComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        //let snapshot : ActivatedRouteSnapshot = this.route.snapshot;
-        //this.contact = this.contactService.getContact(snapshot.params['id']);
+        /*
+        *This only works well if you know that this same component instance is not reused because you only are given the snaphot once, after the component is
+        *initialized. You can try it by uncommenting this part and commenting the next part. What happens if you change a contact in the list?
+        *
+        *let snapshot : ActivatedRouteSnapshot = this.route.snapshot;
+        *this.contact = this.contactService.getContact(snapshot.params['id']);
+        * */
 
+        /**
+         * This will update your contact everytime, also if this component instance is reused.
+         */
         this.route.params.map(params => params["id"]).subscribe(
             (contactId:number) => {
                 this.contact = this.contactService.getContact(contactId)
             }
         );
+
+        /**
+         * But also the method above has its drawbacks. If the retrieval of the contact from the backend fails, you already have loaded your component. You could set it
+         * invisible in this case. Or you could use the "resolve" functionalility in the router, than you have to write a resolver that fetches the data before the navigation is
+         * finalized. This resolver will return a Promise<boolean> to the router, if you get the data from the server succesfully you will resolve the promise to "true"
+         * and attach the contact to your routing context, but if there is an error fetching data you can resolve the promise to "false".
+         *
+         * See also the ContactEditorWithRoutingGuard for related aspects.
+         */
 
     }
 
